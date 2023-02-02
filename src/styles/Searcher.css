@@ -1,0 +1,26 @@
+.searcher {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 550px;
+    justify-content: center;
+}
+
+.searcher input { 
+    display: inline-block;
+    margin: 0 auto;
+    border: 1px solid #cfcece;
+    border-radius: 10px;
+    width: 500px;
+    height: 35px;
+    padding: 5px;
+    outline: none;
+}
+
+.searcher button {
+    display: inline-block;
+    width: 50px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+}
