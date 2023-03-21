@@ -23,4 +23,12 @@
     height: 35px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+}
+
+.logo {
+    display: block;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
