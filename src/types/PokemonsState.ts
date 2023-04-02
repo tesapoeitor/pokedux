@@ -1,5 +1,5 @@
-import type { PokeAPI } from "./PokeAPI"
+import type { Pokemon } from "./Pokemon"
 
 export interface PokemonsState {
-    pokemons: PokeAPI["results"]
+    pokemons: Pokemon[]
 }

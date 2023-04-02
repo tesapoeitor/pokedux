@@ -1,6 +1,6 @@
-import type { PokeAPI } from "./PokeAPI"
+import type { Pokemon } from "./Pokemon"
 
 export interface Action {
-    type: "SET_POKEMONS",
-    payload: PokeAPI["results"]
+    type: "SET_POKEMONS" | "SET_FAVORITE",
+    payload: Pokemon[] | { pokemonId: number }
 }

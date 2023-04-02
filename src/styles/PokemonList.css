@@ -5,4 +5,25 @@
     margin-top: 48px;
     padding: 0 48px 48px;
     gap: 32px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 630px) {
+    .pokemon-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (min-width: 631px) and (max-width: 920px) {
+    .pokemon-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 921px) and (max-width: 1200px) {
+    .pokemon-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

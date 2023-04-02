@@ -1,18 +1,23 @@
-import React from "react"
-
 import { PokemonCard } from "../components/PokemonCard"
+import { Pokemon } from "../types/Pokemon"
 import "../styles/PokemonList.css"
-import { PokeAPI } from "../types/PokeAPI"
 
 interface Props {
-    pokemons: PokeAPI["results"]
+    pokemons: Pokemon[]
 }
 
 const PokemonList= ({ pokemons }: Props) => {
     return (
         <div className="pokemon-list">
         {pokemons.map(pokemon => (
-            <PokemonCard name={pokemon.name} key={pokemon.name}/>
+            <PokemonCard 
+                name={pokemon.name} 
+                image={pokemon.sprites.front_default}
+                types={pokemon.types}
+                key={pokemon.name}
+                isFavorite={pokemon.isFavorite ? pokemon.isFavorite : false}
+                id={pokemon.id}
+            />
         ))}
         </div>
     )

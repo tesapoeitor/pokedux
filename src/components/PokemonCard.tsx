@@ -1,21 +1,35 @@
-import React from "react"
-
-import favoriteStar from "../assets/icon-favorite-star.svg"
+import { Favorite } from "./Favorite"
 import "../styles/PokemonCard.css"
+import { Pokemon } from "../types/Pokemon"
+import { useDispatch } from "react-redux"
+import { setFavorite } from "../actions"
 
 interface Props {
-    name: string
+    name: string,
+    image: string,
+    types: Pokemon["types"],
+    isFavorite: boolean,
+    id: number
 }
 
-const PokemonCard = ({ name }: Props) => {
+const PokemonCard = ({ name, image, types, isFavorite, id }: Props) => {
+    const typesString = types.map(type => type.type.name).join(", ")
+    const dispatch = useDispatch()
+
+    const handleFavorite = () => {
+        dispatch(setFavorite({ pokemonId: id }))
+    }
+
     return (
         <article className="pokemon-card">
             <div className="pokemon-card-header">
                 <h3 className="pokemoncard-title">{name}</h3>
-                <img src={favoriteStar} alt="star icon" />
+                <Favorite onClick={handleFavorite} isFavorite={isFavorite}/>
             </div>
-            <img className="pokemon-card-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png" alt="" />
-            <p className="pokemon-card-description">fire, magic</p>
+            <img className="pokemon-card-image" src={image} alt={name} />
+            <span className="pokemon-card-abilities">
+                {typesString}
+            </span>
         </article>
     )
 }
