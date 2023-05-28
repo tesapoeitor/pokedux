@@ -2,7 +2,7 @@ import { Favorite } from "./Favorite"
 import "../styles/PokemonCard.css"
 import { Pokemon } from "../types/Pokemon"
 import { useDispatch } from "react-redux"
-import { setFavorite } from "../actions"
+import { setFavorite } from "../slices/dataSlice"
 
 interface Props {
     name: string,

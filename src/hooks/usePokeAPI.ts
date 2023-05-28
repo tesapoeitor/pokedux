@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import  axios from "axios"
-import { useSelector, useDispatch, shallowEqual } from "react-redux"
-import { setPokemons } from "../actions"
+import { useSelector, useDispatch } from "react-redux"
+import { setPokemons, setSearchedPokemons } from "../slices/dataSlice"
 import type { PokeAPI } from "../types/PokeAPI"
 import type { PokemonsState } from "../types/PokemonsState"
 import { Pokemon } from "../types/Pokemon"
@@ -14,7 +14,7 @@ const getPokemonDetails = async (pokemon: {url: string}) => {
 }
 
 const usePokeAPI = () => {
-    const pokemons = useSelector((state: PokemonsState) => state.pokemons, shallowEqual)
+    const pokemons = useSelector((state: PokemonsState) => state.pokemons)
     const dispatch = useDispatch()
 
     const API = "https://pokeapi.co/api/v2/pokemon?limit=151"
@@ -26,6 +26,7 @@ const usePokeAPI = () => {
         const pokemonsDetailed = await Promise.all(data.map((pokemon) => getPokemonDetails(pokemon)))
 
         dispatch(setPokemons(pokemonsDetailed))
+        dispatch(setSearchedPokemons(pokemonsDetailed))
     }
 
     useEffect(() => {
